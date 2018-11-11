@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArmTester.IntegrationTests</name>
+    </assembly>
+    <members>
+        <member name="T:ArmTester.IntegrationTests.Helpers.ArmTemplateDeploymentCollection">
+            <summary>
+            ARM template deployment collection.
+            </summary>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Helpers.ArmTemplateDeploymentFixture">
+            <summary>
+            ARM template deployment fixture.
+            </summary>
+            <seealso cref="T:Xunit.IAsyncLifetime" />
+        </member>
+        <member name="M:ArmTester.IntegrationTests.Helpers.ArmTemplateDeploymentFixture.InitializeAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:ArmTester.IntegrationTests.Helpers.ArmTemplateDeploymentFixture.ToContainerUri(System.String)">
+            <summary>
+            Converts the template file to a container URI with SAS token.
+            </summary>
+            <param name="templateFile">The template file.</param>
+            <returns>The container URI with SAS token.</returns>
+        </member>
+        <member name="M:ArmTester.IntegrationTests.Helpers.ArmTemplateDeploymentFixture.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Helpers.SampleArmTester">
+            <summary>
+            Sample ARM tester.
+            </summary>
+        </member>
+        <member name="M:ArmTester.IntegrationTests.Helpers.SampleArmTester.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.IntegrationTests.Helpers.SampleArmTester"/> class.
+            </summary>
+        </member>
+        <member name="M:ArmTester.IntegrationTests.Helpers.SampleArmTester.ValidateResourceGroup(System.String,System.String)">
+            <summary>
+            Validates a resource group deployment.
+            </summary>
+            <param name="templateLink">The template link.</param>
+            <param name="parametersLink">The parameters link.</param>
+            <returns>The ARM tester result.</returns>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Settings">
+            <summary>
+            Settings.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Settings.Thumbprint">
+            <summary>
+            Gets or sets the thumbprint.
+            </summary>
+            <value>
+            The thumbprint.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Settings.ClientId">
+            <summary>
+            Gets or sets the client identifier.
+            </summary>
+            <value>
+            The client identifier.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Settings.SubscriptionId">
+            <summary>
+            Gets or sets the subscription identifier.
+            </summary>
+            <value>
+            The subscription identifier.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Settings.ResourceGroupName">
+            <summary>
+            Gets or sets the name of the resource group.
+            </summary>
+            <value>
+            The name of the resource group.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Settings.TenantId">
+            <summary>
+            Gets or sets the tenant identifier.
+            </summary>
+            <value>
+            The tenant identifier.
+            </value>
+        </member>
+    </members>
+</doc>

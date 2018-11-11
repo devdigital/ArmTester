@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArmTester.Console</name>
+    </assembly>
+    <members>
+        <member name="T:ArmTester.Console.Program">
+            <summary>
+            The program.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Console.Program.Main(System.String[])">
+            <summary>
+            Defines the entry point of the application.
+            </summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:ArmTester.Console.Program.Run(ArmTester.Console.Settings)">
+            <summary>
+            Runs the application.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="T:ArmTester.Console.Settings">
+            <summary>
+            Settings.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Console.Settings.Thumbprint">
+            <summary>
+            Gets or sets the thumbprint.
+            </summary>
+            <value>
+            The thumbprint.
+            </value>
+        </member>
+        <member name="P:ArmTester.Console.Settings.StorageContainerUri">
+            <summary>
+            Gets or sets the storage container URI.
+            </summary>
+            <value>
+            The storage container URI.
+            </value>
+        </member>
+        <member name="P:ArmTester.Console.Settings.SasToken">
+            <summary>
+            Gets or sets the sas token.
+            </summary>
+            <value>
+            The sas token.
+            </value>
+        </member>
+        <member name="P:ArmTester.Console.Settings.ContainerName">
+            <summary>
+            Gets or sets the name of the container.
+            </summary>
+            <value>
+            The name of the container.
+            </value>
+        </member>
+        <member name="P:ArmTester.Console.Settings.BlobEndpoint">
+            <summary>
+            Gets or sets the BLOB endpoint.
+            </summary>
+            <value>
+            The BLOB endpoint.
+            </value>
+        </member>
+    </members>
+</doc>

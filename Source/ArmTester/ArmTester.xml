@@ -1,0 +1,909 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArmTester</name>
+    </assembly>
+    <members>
+        <member name="T:ArmTester.Authentication.AzureAuthenticator">
+            <summary>
+            Azure authenticator.
+            See https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential
+            and https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/TodoListDaemonWithCert/Program.cs.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Authentication.AzureAuthenticator.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Authentication.AzureAuthenticator"/> class.
+            Example cloud is "https://login.microsoftonline.com"
+            Example tenantId is "contoso.onmicrosoft.com".
+            </summary>
+            <param name="cloud">The cloud.</param>
+            <param name="tenantId">The tenant identifier.</param>
+        </member>
+        <member name="M:ArmTester.Authentication.AzureAuthenticator.AuthenticateFromCertificate(System.String,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)">
+            <summary>
+            Authenticates against Azure from an X509 certificate.
+            clientId is the application id within Azure AD.
+            resourceId is e.g. "https://management.azure.com" for resource management API.
+            </summary>
+            <param name="clientId">The client identifier.</param>
+            <param name="certificate">The certificate.</param>
+            <param name="resourceId">The resource identifier.</param>
+            <returns>The authentication result.</returns>
+        </member>
+        <member name="T:ArmTester.Authentication.CertificateResolver">
+            <summary>
+            Certificate resolver.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Authentication.CertificateResolver.FromStoreByThumbprint(System.Security.Cryptography.X509Certificates.StoreName,System.Security.Cryptography.X509Certificates.StoreLocation,System.String)">
+            <summary>
+            Gets a certificate from the store by thumbprint.
+            </summary>
+            <param name="storeName">Name of the store.</param>
+            <param name="storeLocation">The store location.</param>
+            <param name="thumbprint">The thumbprint.</param>
+            <returns>The certificate.</returns>
+        </member>
+        <member name="T:ArmTester.Configuration.SettingsService">
+            <summary>
+            Settings service.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Configuration.SettingsService.GetFromJson``1(System.String)">
+            <summary>
+            Gets settings from appsettings.json files.
+            </summary>
+            <typeparam name="TData">The type of the data.</typeparam>
+            <param name="sectionKey">The section key.</param>
+            <returns>The settings instance.</returns>
+        </member>
+        <member name="T:ArmTester.Http.HttpResponse">
+            <summary>
+            HTTP response.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Http.HttpResponse.#ctor(System.Net.HttpStatusCode,System.Net.Http.Headers.HttpResponseHeaders,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Http.HttpResponse"/> class.
+            </summary>
+            <param name="statusCode">The status code.</param>
+            <param name="headers">The headers.</param>
+            <param name="requestBody">The request body.</param>
+            <param name="responseBody">The response body.</param>
+        </member>
+        <member name="P:ArmTester.Http.HttpResponse.StatusCode">
+            <summary>
+            Gets the status code.
+            </summary>
+            <value>
+            The status code.
+            </value>
+        </member>
+        <member name="P:ArmTester.Http.HttpResponse.Headers">
+            <summary>
+            Gets the headers.
+            </summary>
+            <value>
+            The headers.
+            </value>
+        </member>
+        <member name="P:ArmTester.Http.HttpResponse.RequestBody">
+            <summary>
+            Gets the request body.
+            </summary>
+            <value>
+            The request body.
+            </value>
+        </member>
+        <member name="P:ArmTester.Http.HttpResponse.ResponseBody">
+            <summary>
+            Gets the response body.
+            </summary>
+            <value>
+            The response body.
+            </value>
+        </member>
+        <member name="P:ArmTester.Http.HttpResponse.IsSuccess">
+            <summary>
+            Gets a value indicating whether this instance is success.
+            </summary>
+            <value>
+              <c>true</c> if this instance is success; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:ArmTester.Http.HttpResponse.ResponseAs``1">
+            <summary>
+            Gets the response JSON as a type.
+            </summary>
+            <typeparam name="TData">The type of the data.</typeparam>
+            <returns>The instance of the type.</returns>
+        </member>
+        <member name="T:ArmTester.Http.RestApiClient">
+            <summary>
+            Rest API client.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Http.RestApiClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Http.RestApiClient"/> class.
+            </summary>
+            <param name="token">The token.</param>
+        </member>
+        <member name="M:ArmTester.Http.RestApiClient.Get(System.String)">
+            <summary>
+            Gets the HTTP response.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns>The HTTP response.</returns>
+        </member>
+        <member name="M:ArmTester.Http.RestApiClient.PostJson``1(System.String,``0)">
+            <summary>
+            Posts the json.
+            </summary>
+            <typeparam name="TRequest">The type of the request.</typeparam>
+            <param name="uri">The URI.</param>
+            <param name="data">The data.</param>
+            <returns>The HTTP response.</returns>
+        </member>
+        <member name="T:ArmTester.Storage.StorageAccount">
+            <summary>
+            Storage account.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccount.#ctor(Microsoft.WindowsAzure.Storage.CloudStorageAccount)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Storage.StorageAccount"/> class.
+            </summary>
+            <param name="storageAccount">The storage account.</param>
+        </member>
+        <member name="P:ArmTester.Storage.StorageAccount.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:ArmTester.Storage.StorageAccount.ContainerUri">
+            <summary>
+            Gets the container URI.
+            </summary>
+            <value>
+            The container URI.
+            </value>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccount.CreateContainerSasToken(System.String,System.Int32)">
+            <summary>
+            Creates the container SAS token.
+            </summary>
+            <param name="containerName">Name of the container.</param>
+            <param name="expiryHours">The expiry hours.</param>
+            <returns>
+            The SAS token.
+            </returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccount.UploadFolder(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Uploads the folder.
+            </summary>
+            <param name="localFolder">The local folder.</param>
+            <param name="containerName">Name of the container.</param>
+            <param name="remoteFolder">The remote folder.</param>
+            <param name="createContainerIfNotExists">if set to <c>true</c> [create container if not exists].</param>
+            <returns>The upload status.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccount.DeleteFolder(System.String,System.String)">
+            <summary>
+            Deletes the folder.
+            </summary>
+            <param name="containerName">Name of the container.</param>
+            <param name="remoteFolder">The remote folder.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="T:ArmTester.Storage.StorageAccountService">
+            <summary>
+            Storage account service.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccountService.GetStorageAccount(System.String)">
+            <summary>
+            Gets the storage account.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+            <returns>The storage account.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccountService.CreateStorageAccount(Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentials,System.String,System.String)">
+            <summary>
+            Creates a storage account.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <param name="subscriptionId">The subscription identifier.</param>
+            <param name="resourceGroup">The resource group.</param>
+            <returns>The storage account.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccountService.CreateStorageAccount(Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentials,System.String,System.String,System.String)">
+            <summary>
+            Creates the storage account.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <param name="subscriptionId">The subscription identifier.</param>
+            <param name="resourceGroup">The resource group.</param>
+            <param name="storageAccountName">Name of the storage account.</param>
+            <returns>The storage account.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageAccountService.DeleteStorageAccount(Microsoft.Azure.Management.ResourceManager.Fluent.Authentication.AzureCredentials,System.String,System.String,System.String)">
+            <summary>
+            Deletes the storage account.
+            </summary>
+            <param name="credentials">The credentials.</param>
+            <param name="subscriptionId">The subscription identifier.</param>
+            <param name="resourceGroup">The resource group.</param>
+            <param name="storageAccountName">Name of the storage account.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="T:ArmTester.Storage.StorageConnectionStringBuilder">
+            <summary>
+            Storage connection string builder.
+            See https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringBuilder.BuildEmulator">
+            <summary>
+            Builds the storage connection string using the storage emulator.
+            </summary>
+            <returns>The storage connection string.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringBuilder.WithDefaultEndpoint(System.String)">
+            <summary>
+            Adds a default endpoint.
+            </summary>
+            <param name="defaultEndpointsProtocol">The default endpoints protocol.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringBuilder.WithBlobEndpoint(System.String)">
+            <summary>
+            Adds blog endpoint.
+            </summary>
+            <param name="blobEndpoint">The blob endpoint.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringBuilder.WithEndpointSuffix(System.String)">
+            <summary>
+            Adds a endpoint suffix.
+            </summary>
+            <param name="endpointSuffix">The endpoint suffix.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="T:ArmTester.Storage.StorageConnectionStringInProgressBuilder">
+            <summary>
+            Storage connection string in progress builder.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringInProgressBuilder.#ctor(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Storage.StorageConnectionStringInProgressBuilder"/> class.
+            </summary>
+            <param name="elements">The elements.</param>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringInProgressBuilder.WithDefaultEndpoint(System.String)">
+            <summary>
+            Adds a default endpoint.
+            </summary>
+            <param name="defaultEndpointsProtocol">The default endpoints protocol.</param>
+            <returns>The builder.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringInProgressBuilder.BuildSasToken(System.String)">
+            <summary>
+            Builds the storage connection string using SAS token.
+            </summary>
+            <param name="sasToken">The SAS token.</param>
+            <returns>The storage connection string.</returns>
+        </member>
+        <member name="M:ArmTester.Storage.StorageConnectionStringInProgressBuilder.BuildAccountKey(System.String,System.String)">
+            <summary>
+            Builds the storage connection string using account name and account key.
+            </summary>
+            <param name="accountName">Name of the account.</param>
+            <param name="accountKey">The account key.</param>
+            <returns>The storage connection string.</returns>
+        </member>
+        <member name="T:ArmTester.Storage.StorageContainerUriBuilder">
+            <summary>
+            Storage container URI builder.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Storage.StorageContainerUriBuilder.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Storage.StorageContainerUriBuilder"/> class.
+            </summary>
+            <param name="containerUri">The container URI.</param>
+            <param name="sasToken">The SAS token.</param>
+        </member>
+        <member name="M:ArmTester.Storage.StorageContainerUriBuilder.Build(System.String)">
+            <summary>
+            Builds the storage container URI.
+            </summary>
+            <param name="file">The file.</param>
+            <returns>The storage container URI.</returns>
+        </member>
+        <member name="T:ArmTester.Storage.UploadStatus">
+            <summary>
+            Upload status.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Storage.UploadStatus.#ctor(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Storage.UploadStatus"/> class.
+            </summary>
+            <param name="bytesTransferred">The bytes transferred.</param>
+            <param name="numberOfFilesTransferred">The number of files transferred.</param>
+            <param name="numberOfFilesFailed">The number of files failed.</param>
+            <param name="numberOfFilesSkipped">The number of files skipped.</param>
+        </member>
+        <member name="P:ArmTester.Storage.UploadStatus.BytesTransferred">
+            <summary>
+            Gets the bytes transferred.
+            </summary>
+            <value>
+            The bytes transferred.
+            </value>
+        </member>
+        <member name="P:ArmTester.Storage.UploadStatus.NumberOfFilesTransferred">
+            <summary>
+            Gets the number of files transferred.
+            </summary>
+            <value>
+            The number of files transferred.
+            </value>
+        </member>
+        <member name="P:ArmTester.Storage.UploadStatus.NumberOfFilesFailed">
+            <summary>
+            Gets the number of files failed.
+            </summary>
+            <value>
+            The number of files failed.
+            </value>
+        </member>
+        <member name="P:ArmTester.Storage.UploadStatus.NumberOfFilesSkipped">
+            <summary>
+            Gets the number of files skipped.
+            </summary>
+            <value>
+            The number of files skipped.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationAliasPathTypeApiModel">
+            <summary>
+            Deployment validation alias path type API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationAliasPathTypeApiModel.ApiVersions">
+            <summary>
+            Gets or sets the API versions.
+            </summary>
+            <value>
+            The API versions.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationAliasPathTypeApiModel.Path">
+            <summary>
+            Gets or sets the path.
+            </summary>
+            <value>
+            The path.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationAliasTypeApiModel">
+            <summary>
+            Deployment validation alias type API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationAliasTypeApiModel.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationAliasTypeApiModel.Paths">
+            <summary>
+            Gets or sets the paths.
+            </summary>
+            <value>
+            The paths.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationApiModel">
+            <summary>
+            Deployment validation API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationApiModel.Location">
+            <summary>
+            Gets or sets the location.
+            </summary>
+            <value>
+            The location.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationApiModel.Properties">
+            <summary>
+            Gets or sets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationBasicDependency">
+            <summary>
+            Deployment validation basic dependency.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationBasicDependency.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationBasicDependency.ResourceName">
+            <summary>
+            Gets or sets the name of the resource.
+            </summary>
+            <value>
+            The name of the resource.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationBasicDependency.ResourceType">
+            <summary>
+            Gets or sets the type of the resource.
+            </summary>
+            <value>
+            The type of the resource.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationDebugSettingApiModel">
+            <summary>
+            Deployment validation debug setting API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationDebugSettingApiModel.DetailLevel">
+            <summary>
+            Gets or sets the detail level.
+            </summary>
+            <value>
+            The detail level.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationDependencyApiModel">
+            <summary>
+            Deployment validation dependency API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationDependencyApiModel.DependsOn">
+            <summary>
+            Gets or sets the depends on.
+            </summary>
+            <value>
+            The depends on.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationDependencyApiModel.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationDependencyApiModel.ResourceName">
+            <summary>
+            Gets or sets the name of the resource.
+            </summary>
+            <value>
+            The name of the resource.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationDependencyApiModel.ResourceType">
+            <summary>
+            Gets or sets the type of the resource.
+            </summary>
+            <value>
+            The type of the resource.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationErrorResultApiModel">
+            <summary>
+            Deployment validation error result API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationErrorResultApiModel.Code">
+            <summary>
+            Gets or sets the code.
+            </summary>
+            <value>
+            The code.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationErrorResultApiModel.Details">
+            <summary>
+            Gets or sets the details.
+            </summary>
+            <value>
+            The details.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationErrorResultApiModel.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>
+            The message.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationErrorResultApiModel.Target">
+            <summary>
+            Gets or sets the target.
+            </summary>
+            <value>
+            The target.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationParametersLinkApiModel">
+            <summary>
+            Deployment validation parameters link API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationParametersLinkApiModel.ContentVersion">
+            <summary>
+            Gets or sets the content version.
+            </summary>
+            <value>
+            The content version.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationParametersLinkApiModel.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>
+            The URI.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel">
+            <summary>
+            Deployment validation properties API model.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel.Mode">
+            <summary>
+            Gets or sets the mode.
+            </summary>
+            <value>
+            The mode.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel.DebugSetting">
+            <summary>
+            Gets or sets the debug setting.
+            </summary>
+            <value>
+            The debug setting.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel.TemplateLink">
+            <summary>
+            Gets or sets the template link.
+            </summary>
+            <value>
+            The template link.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesApiModel.ParametersLink">
+            <summary>
+            Gets or sets the parameters link.
+            </summary>
+            <value>
+            The parameters link.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesExtendedApiModel">
+            <summary>
+            Deployment validation properties extended API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesExtendedApiModel.CorrelationId">
+            <summary>
+            Gets or sets the correlation identifier.
+            </summary>
+            <value>
+            The correlation identifier.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesExtendedApiModel.Dependencies">
+            <summary>
+            Gets or sets the dependencies.
+            </summary>
+            <value>
+            The dependencies.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesExtendedApiModel.Outputs">
+            <summary>
+            Gets or sets the outputs.
+            </summary>
+            <value>
+            The outputs.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesExtendedApiModel.Providers">
+            <summary>
+            Gets or sets the providers.
+            </summary>
+            <value>
+            The providers.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationPropertiesExtendedApiModel.ProvisioningState">
+            <summary>
+            Gets or sets the state of the provisioning.
+            </summary>
+            <value>
+            The state of the provisioning.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationProviderApiModel">
+            <summary>
+            Deployment validation provider API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderApiModel.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderApiModel.Namespace">
+            <summary>
+            Gets or sets the namespace.
+            </summary>
+            <value>
+            The namespace.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderApiModel.RegistrationState">
+            <summary>
+            Gets or sets the state of the registration.
+            </summary>
+            <value>
+            The state of the registration.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderApiModel.ResourceTypes">
+            <summary>
+            Gets or sets the resource types.
+            </summary>
+            <value>
+            The resource types.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationProviderResourceTypeApiModel">
+            <summary>
+            Deployment validation provider resource type API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderResourceTypeApiModel.Aliases">
+            <summary>
+            Gets or sets the aliases.
+            </summary>
+            <value>
+            The aliases.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderResourceTypeApiModel.ApiVersions">
+            <summary>
+            Gets or sets the API versions.
+            </summary>
+            <value>
+            The API versions.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderResourceTypeApiModel.Locations">
+            <summary>
+            Gets or sets the locations.
+            </summary>
+            <value>
+            The locations.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderResourceTypeApiModel.Properties">
+            <summary>
+            Gets or sets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationProviderResourceTypeApiModel.ResourceType">
+            <summary>
+            Gets or sets the type of the resource.
+            </summary>
+            <value>
+            The type of the resource.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationResultApiModel">
+            <summary>
+            Deployment validation result API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationResultApiModel.Error">
+            <summary>
+            Gets or sets the error.
+            </summary>
+            <value>
+            The error.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationResultApiModel.Properties">
+            <summary>
+            Gets or sets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ApiModels.DeploymentValidationTemplateLinkApiModel">
+            <summary>
+            Deployment validation template link API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationTemplateLinkApiModel.ContentVersion">
+            <summary>
+            Gets or sets the content version.
+            </summary>
+            <value>
+            The content version.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ApiModels.DeploymentValidationTemplateLinkApiModel.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>
+            The URI.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ArmTester">
+            <summary>
+            ARM tester.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Validate.ArmTester.BeginSubscriptionDeployment(System.String)">
+            <summary>
+            Begins the subscription deployment.
+            </summary>
+            <param name="subscriptionId">The subscription identifier.</param>
+            <returns>The subscription deployment builder.</returns>
+        </member>
+        <member name="M:ArmTester.Validate.ArmTester.BeginResourceGroupDeployment(System.String,System.String)">
+            <summary>
+            Begins the resource group deployment.
+            </summary>
+            <param name="subscriptionId">The subscription identifier.</param>
+            <param name="resourceGroup">The resource group.</param>
+            <returns>The resource group deployment builder.</returns>
+        </member>
+        <member name="T:ArmTester.Validate.ArmTesterResult">
+            <summary>
+            ARM tester result.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Validate.ArmTesterResult.#ctor(System.Nullable{System.Net.HttpStatusCode},System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Validate.ArmTesterResult"/> class.
+            </summary>
+            <param name="statusCode">The status code.</param>
+            <param name="requestBody">The request body.</param>
+            <param name="responseBody">The response body.</param>
+        </member>
+        <member name="P:ArmTester.Validate.ArmTesterResult.StatusCode">
+            <summary>
+            Gets the status code.
+            </summary>
+            <value>
+            The status code.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ArmTesterResult.RequestBody">
+            <summary>
+            Gets the request body.
+            </summary>
+            <value>
+            The request body.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ArmTesterResult.ResponseBody">
+            <summary>
+            Gets the response body.
+            </summary>
+            <value>
+            The response body.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ArmTesterResult.Response">
+            <summary>
+            Gets the response.
+            </summary>
+            <value>
+            The response.
+            </value>
+        </member>
+        <member name="P:ArmTester.Validate.ArmTesterResult.IsSuccess">
+            <summary>
+            Gets a value indicating whether this instance is success.
+            </summary>
+            <value>
+              <c>true</c> if this instance is success; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:ArmTester.Validate.ResourceGroupDeploymentBuilder">
+            <summary>
+            Resource group deployment builder.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Validate.ResourceGroupDeploymentBuilder.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Validate.ResourceGroupDeploymentBuilder"/> class.
+            </summary>
+            <param name="subscriptionId">The subscription identifier.</param>
+            <param name="resourceGroup">The resource group.</param>
+        </member>
+        <member name="M:ArmTester.Validate.ResourceGroupDeploymentBuilder.Validate(System.Func{System.Threading.Tasks.Task{System.String}},System.String,System.String)">
+            <summary>
+            Validates the ARM template deployment.
+            </summary>
+            <param name="accessTokenResolver">The access token resolver.</param>
+            <param name="templateLink">The template link.</param>
+            <param name="parametersLink">The parameters link.</param>
+            <returns>The ARM tester result.</returns>
+        </member>
+        <member name="T:ArmTester.Validate.SubscriptionDeploymentBuilder">
+            <summary>
+            Subscription deployment builder.
+            </summary>
+        </member>
+        <member name="M:ArmTester.Validate.SubscriptionDeploymentBuilder.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ArmTester.Validate.SubscriptionDeploymentBuilder"/> class.
+            </summary>
+            <param name="subscriptionId">The subscription identifier.</param>
+        </member>
+        <member name="M:ArmTester.Validate.SubscriptionDeploymentBuilder.WithLocation(System.String)">
+            <summary>
+            Adds the location.
+            </summary>
+            <param name="location">The location.</param>
+            <returns>The subscription deployment builder.</returns>
+        </member>
+        <member name="M:ArmTester.Validate.SubscriptionDeploymentBuilder.Validate(System.Func{System.String},System.String,System.String)">
+            <summary>
+            Validates the subscription deployment.
+            </summary>
+            <param name="accessTokenResolver">The access token resolver.</param>
+            <param name="templateLink">The template link.</param>
+            <param name="parametersLink">The parameters link.</param>
+            <returns>The ARM tester result.</returns>
+        </member>
+    </members>
+</doc>
