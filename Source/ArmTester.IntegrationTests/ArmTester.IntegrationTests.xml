@@ -91,5 +91,158 @@
             The tenant identifier.
             </value>
         </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.AzureRestResponseApiModel`1">
+            <summary>
+            Azure REST API response API model.
+            </summary>
+            <typeparam name="T">The type of properties.</typeparam>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.AzureRestResponseApiModel`1.Properties">
+            <summary>
+            Gets or sets the properties.
+            </summary>
+            <value>
+            The properties.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicyApiModel">
+            <summary>
+            Policy API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyApiModel.PolicyDefinitionId">
+            <summary>
+            Gets or sets the policy definition identifier.
+            </summary>
+            <value>
+            The policy definition identifier.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicyDefinitionResponseApiModel">
+            <summary>
+            Policy definition response API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyDefinitionResponseApiModel.PolicyDefinitions">
+            <summary>
+            Gets or sets the policy definitions.
+            </summary>
+            <value>
+            The policy definitions.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicyDetailApiModel">
+            <summary>
+            Policy detail API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyDetailApiModel.DisplayName">
+            <summary>
+            Gets or sets the display name.
+            </summary>
+            <value>
+            The display name.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyDetailApiModel.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>
+            The description.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyDetailApiModel.Parameters">
+            <summary>
+            Gets or sets the parameters.
+            </summary>
+            <value>
+            The parameters.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicyEffectApiModel">
+            <summary>
+            Policy effect API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyEffectApiModel.Metadata">
+            <summary>
+            Gets or sets the metadata.
+            </summary>
+            <value>
+            The metadata.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyEffectApiModel.DefaultValue">
+            <summary>
+            Gets or sets the default value.
+            </summary>
+            <value>
+            The default value.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicyEffectMetadataApiModel">
+            <summary>
+            Policy effect metadata API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyEffectMetadataApiModel.DisplayName">
+            <summary>
+            Gets or sets the display name.
+            </summary>
+            <value>
+            The display name.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyEffectMetadataApiModel.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>
+            The description.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicyParametersApiModel">
+            <summary>
+            Policy parameters API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicyParametersApiModel.Effect">
+            <summary>
+            Gets or sets the effect.
+            </summary>
+            <value>
+            The effect.
+            </value>
+        </member>
+        <member name="T:ArmTester.IntegrationTests.Tests.Policy.PolicySummaryApiModel">
+            <summary>
+            Policy summary API model.
+            </summary>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicySummaryApiModel.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicySummaryApiModel.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>
+            The description.
+            </value>
+        </member>
+        <member name="P:ArmTester.IntegrationTests.Tests.Policy.PolicySummaryApiModel.DefaultEffect">
+            <summary>
+            Gets or sets the default effect.
+            </summary>
+            <value>
+            The default effect.
+            </value>
+        </member>
     </members>
 </doc>
